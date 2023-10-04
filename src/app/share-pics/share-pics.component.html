@@ -1,10 +1,11 @@
 <div class="sharepics-card">
-    <h2>{{ title }}</h2>
-    <p>Mise en ligne le : {{ createdDate }}</p>
-    <img [src]="imageUrl" [alt]="description">
-    <p>{{ description }}</p>
+    <h2>{{ sharePics.title }}</h2>
+    <p>Mise en ligne le : {{ sharePics.createdDate }}</p>
+    <img [src]="sharePics.imageUrl" [alt]="sharePics.description">
+    <p>{{ sharePics.description }}</p>
+    <p *ngIf="sharePics.location">Photo prise en {{ sharePics.location }}</p>
     <p>
         <button (click)="onLike()">{{ buttonText }}</button>
-         {{ likes }} 😍
+         {{ sharePics.likes }} 😍
     </p>
 </div>
