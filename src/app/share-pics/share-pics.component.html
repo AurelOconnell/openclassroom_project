@@ -1,4 +1,4 @@
-<div class="sharepics-card">
+<div class="sharepics-card" [ngClass]="{liked: buttonText == 'Nay!' }">
     <h2>{{ sharePics.title }}</h2>
     <p>Mise en ligne le : {{ sharePics.createdDate }}</p>
     <img [src]="sharePics.imageUrl" [alt]="sharePics.description">
@@ -6,6 +6,6 @@
     <p *ngIf="sharePics.location">Photo prise en {{ sharePics.location }}</p>
     <p>
         <button (click)="onLike()">{{ buttonText }}</button>
-         {{ sharePics.likes }} 😍
+         <span [ngStyle]="{color: 'rgb(0, ' + sharePics.likes + ', 0)'}">{{ sharePics.likes }} 😍</span>
     </p>
 </div>
