@@ -1,0 +1,13 @@
+<div class="sharepics-card" [ngClass]="{liked: buttonText == 'Nay!' }">
+    <h2>{{ sharePics.title | uppercase }}</h2>
+    <a routerLink="/sharepics">Back</a>
+    <p>Mis en ligne {{ sharePics.createdDate | date : 'le d MMM yy' }}</p>
+    <img [src]="sharePics.imageUrl" [alt]="sharePics.description">
+    <p>{{ sharePics.description }}</p>
+
+    <p *ngIf="sharePics.location">Photo prise en {{ sharePics.location }}</p>
+    <p>
+        <button (click)="onLike()">{{ buttonText }}</button>
+         <span [ngStyle]="{color: 'rgb(0, ' + sharePics.likes + ', 0)'}">{{ sharePics.likes }} 😍</span>
+    </p>
+</div>

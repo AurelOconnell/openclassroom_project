@@ -1,24 +1,26 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SharePics } from '../models/share-pics.models';
 import { SharePicsService } from '../service/share-pics.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-share-pics',
-  templateUrl: './share-pics.component.html',
-  styleUrls: ['./share-pics.component.scss'],
+  selector: 'app-single-share-pics',
+  templateUrl: './single-share-pics.component.html',
+  styleUrls: ['./single-share-pics.component.scss'],
 })
-export class SharePicsComponent implements OnInit {
-  @Input() sharePics!: SharePics;
+export class SingleSharePicsComponent implements OnInit {
+  sharePics!: SharePics;
   buttonText!: string;
 
   constructor(
     private sharePicsService: SharePicsService,
-    private router: Router
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.buttonText = 'This pic!!';
+    const sharePicsId = +this.route.snapshot.params['id'];
+    this.sharePics = this.sharePicsService.getSharePicsById(sharePicsId);
   }
 
   onLike() {
@@ -29,9 +31,5 @@ export class SharePicsComponent implements OnInit {
       this.sharePicsService.likeSharePicsById(this.sharePics.id, 'unlike');
       this.buttonText = 'This pic!!';
     }
-  }
-
-  onViewSharePics() {
-    this.router.navigateByUrl(`sharepics/${this.sharePics.id}`)
   }
 }

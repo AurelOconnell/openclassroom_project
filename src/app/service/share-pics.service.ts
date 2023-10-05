@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { SharePics } from '../models/share-pics.models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SharePicsService {
-
   sharePics: SharePics[] = [
     {
       id: 1,
@@ -38,12 +37,14 @@ export class SharePicsService {
   ];
 
   getAllSharePics(): SharePics[] {
-   return this.sharePics;
+    return this.sharePics;
   }
 
   getSharePicsById(sharePicsId: number): SharePics {
-    const sharePics = this.sharePics.find(sharePics => sharePics.id === sharePicsId)
-    if(!sharePics) {
+    const sharePics = this.sharePics.find(
+      (sharePics) => sharePics.id === sharePicsId
+    );
+    if (!sharePics) {
       throw new Error('Pic not found');
     } else {
       return sharePics;
@@ -54,6 +55,4 @@ export class SharePicsService {
     const sharePics = this.getSharePicsById(sharePicsId);
     picType === 'like' ? sharePics.likes++ : sharePics.likes--;
   }
-  
-  constructor() { }
 }

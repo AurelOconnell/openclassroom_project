@@ -8,13 +8,17 @@ import * as fr from '@angular/common/locales/fr';
 import { SharePicsListComponent } from './share-pics-list/share-pics-list.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { SingleSharePicsComponent } from './single-share-pics/single-share-pics.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SharePicsComponent,
     SharePicsListComponent,
-    HeaderComponent
+    HeaderComponent,
+    LandingPageComponent,
+    SingleSharePicsComponent
   ],
   imports: [
     BrowserModule,
