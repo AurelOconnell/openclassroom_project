@@ -19,7 +19,7 @@ export class SharePicsListComponent implements OnInit, OnDestroy {
     this.destroy$ = new Subject<boolean>();
     this.sharePics = this.sharePicsService.getAllSharePics();
 
-    interval(1000).pipe(
+    interval(500).pipe(
       takeUntil(this.destroy$),
       tap(console.log)
     ).subscribe();
